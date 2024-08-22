@@ -1,0 +1,77 @@
+{
+    "title": "Workshop Sketch App",
+    "subtitle": "",
+    "splashDialog": {
+        "title": "INSTRUCTIONS",
+        "textHtml": "<p>Welcome!</p><p>Please press button to continue.</p><button id=\"okButton\">Continue</button>",
+        "on": false
+    },
+    "sketchMaps": [
+        {   "title"         :"Centers",
+            "icon"          : "polygon",
+            "agolMapId"     :"8bbd0346267840c591f4476440f5bca1",
+            "sketchOptions" : [
+                {
+                    "title": "Star",
+                    "htmlCode": "&#9733;",
+                    "fontSize": "500%",
+                    "color": "green"
+                },
+                {
+                    "title": "Dot",
+                    "htmlCode": "&#9679;",
+                    "fontSize": "500%",
+                    "color": "purple"
+                }, 
+                {
+                    "title": "Triangle",
+                    "htmlCode": "&#9650;",
+                    "fontSize": "500%",
+                    "color": "red"
+                },
+                {
+                    "title": "Square",
+                    "htmlCode": "&#9632;",
+                    "fontSize": "500%",
+                    "color": "blue"
+                }
+            ]
+        },
+        {   "title"     :"Buses",
+            "icon"      : "driving-distance",
+            "agolMapId" :"5f7dc240bf1c42369255bdefb6657824",
+            "sketchOptions" : [
+                {
+                    "title": "BRT Station",
+                    "htmlCode": "<i class=\"fas fa-bus\"></i>",
+                    "fontSize": "500%",
+                    "color": "blue"
+                },
+                {
+                    "title": "Local Bus Station",
+                    "htmlCode": "&#128652;",
+                    "fontSize": "500%",
+                    "color": "green"
+                }
+            ]
+        },
+        {   "title"     :"Rail Lines",
+            "icon"      : "line-straight",
+            "agolMapId" :"6b31c49a055c42909b6ad50b5d701166",
+            "sketchOptions" : [
+                {
+                    "title": "Bus Line",
+                    "htmlCode": "<svg width='60' height='60' xmlns='http://www.w3.org/2000/svg'><polyline points='0,0 20,40 40,20 60,60' stroke='blue' stroke-width='9' fill='none' /></svg>"
+                },
+                {
+                    "title": "Light Rail Line",
+                    "htmlCode": "<svg width='60' height='60' xmlns='http://www.w3.org/2000/svg'><polyline points='0,0 20,40 40,20 60,60' stroke='red' stroke-width='9' fill='none' /></svg>"
+                },
+                {
+                    "title": "Commuter Rail Line",
+                    "htmlCode": "<svg width='60' height='60' xmlns='http://www.w3.org/2000/svg'><polyline points='0,0 20,40 40,20 60,60' stroke='green' stroke-width='9' fill='none' /></svg>"
+                }
+            ]
+        }
+    ]
+}
