@@ -10,75 +10,17 @@
     {
       "title": "Centers",
       "icon": "polygon",
-      "agolMapId": "f889d6a6996a4c19b7bab1ffc0222feb",
-      "sketchOptions": [
-        {
-          "title": "Star",
-          "id": "green-star",
-          "htmlCode": "&#9733;",
-          "fontSize": "200%",
-          "color": "green"
-        },
-        {
-          "title": "Dot",
-          "id": "purple-dot",
-          "htmlCode": "&#9679;",
-          "fontSize": "200%",
-          "color": "purple"
-        },
-        {
-          "title": "Triangle",
-          "id": "red-triangle",
-          "htmlCode": "&#9650;",
-          "fontSize": "200%",
-          "color": "red"
-        },
-        {
-          "title": "Square",
-          "id": "blue-square",
-          "htmlCode": "&#9632;",
-          "fontSize": "200%",
-          "color": "blue"
-        }
-      ]
+      "agolMapId": "f889d6a6996a4c19b7bab1ffc0222feb"
     },
     {
       "title": "Buses",
       "icon": "driving-distance",
-      "agolMapId": "5f7dc240bf1c42369255bdefb6657824",
-      "sketchOptions": [
-        {
-          "title": "BRT Station",
-          "htmlCode": "<i class=\"fas fa-bus\"></i>",
-          "fontSize": "500%",
-          "color": "blue"
-        },
-        {
-          "title": "Local Bus Station",
-          "htmlCode": "&#128652;",
-          "fontSize": "500%",
-          "color": "green"
-        }
-      ]
+      "agolMapId": "5f7dc240bf1c42369255bdefb6657824"
     },
     {
       "title": "Rail Lines",
       "icon": "line-straight",
-      "agolMapId": "6b31c49a055c42909b6ad50b5d701166",
-      "sketchOptions": [
-        {
-          "title": "Bus Line",
-          "htmlCode": "<svg width='60' height='60' xmlns='http://www.w3.org/2000/svg'><polyline points='0,0 20,40 40,20 60,60' stroke='blue' stroke-width='9' fill='none' /></svg>"
-        },
-        {
-          "title": "Light Rail Line",
-          "htmlCode": "<svg width='60' height='60' xmlns='http://www.w3.org/2000/svg'><polyline points='0,0 20,40 40,20 60,60' stroke='red' stroke-width='9' fill='none' /></svg>"
-        },
-        {
-          "title": "Commuter Rail Line",
-          "htmlCode": "<svg width='60' height='60' xmlns='http://www.w3.org/2000/svg'><polyline points='0,0 20,40 40,20 60,60' stroke='green' stroke-width='9' fill='none' /></svg>"
-        }
-      ]
+      "agolMapId": "6b31c49a055c42909b6ad50b5d701166"
     }
 
   ]

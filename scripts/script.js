@@ -1,10 +1,6 @@
 function toggleMenu() {
-  var navbarLinks = document.getElementById('navbarLinks');
+  var navbarLinks = document.getElementById('navbar-links');
   navbarLinks.classList.toggle('active');
-}
-
-function buttonClick(buttonName) {
-  alert(buttonName + ' button clicked!');
 }
 
 let jsonConfig;
@@ -34,34 +30,16 @@ require([
     }
   }
 
-  // async function loadAndDisplaySplash(splashDialog) {
-  //   // Check if the splashDialog should be shown
-  //   if (splashDialog.on) {
-  //     const modalContent = document.querySelector('#infoModal .modal-content');
-  //     modalContent.innerHTML = "<h1>" + splashDialog.title + "</h1>";
-  //     modalContent.innerHTML += splashDialog.textHtml;
+  
 
-  //     const modal = document.getElementById('infoModal');
-  //     modal.style.display = 'block';
-
-  //     const okButton = document.getElementById('okButton');
-  //     okButton.onclick = function() {
-  //       modal.style.display = 'none';
-  //     };
-  //   } else {
-  //     // If the splashDialog is off, ensure the modal is not displayed
-  //     const modal = document.getElementById('infoModal');
-  //     modal.style.display = 'none';
-  //   }
-  // }
+ 
 
   async function loadSketchMaps() {
     console.log('loadSketchMaps');
 
-    // const calciteMenu = document.querySelector('calcite-menu[slot="content-start"]');
+
     const menuBar = document.getElementById('navbarList');
-    // // Clear existing menu items
-    // calciteMenu.innerHTML = '';
+    // Clear existing menu items
     menuBar.innerHTML = '';
 
     menuItems = jsonConfig.sketchMaps.map(
@@ -78,8 +56,12 @@ require([
 
   async function init() {
     jsonConfig = await fetchConfig();
-    // await loadAndDisplaySplash(jsonConfig.splashDialog);
 
+    // set the title
+    const titleDiv = document.getElementById('titleDiv');
+    title = jsonConfig.title
+    titleDiv.innerHTML = title;
+    // await loadAndDisplaySplash(jsonConfig.splashDialog);
     // Set the title and version in the Esri object
     // const logoElement = document.querySelector('calcite-navigation-logo');
     // logoElement.setAttribute('heading', jsonConfig.title || "Workshop Sketch App");
