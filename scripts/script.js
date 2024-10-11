@@ -1,7 +1,12 @@
-function toggleMenu() {
-  var navbarLinks = document.getElementById('navbar-links');
-  navbarLinks.classList.toggle('active');
+function myFunction() {
+  var menuItems = document.getElementById('menuItems');
+
+    menuItems.classList.toggle("active");
+
+  
 }
+
+
 
 let jsonConfig;
 
@@ -38,7 +43,7 @@ require([
     console.log('loadSketchMaps');
 
 
-    const menuBar = document.getElementById('navbarList');
+    const menuBar = document.getElementById('menuItems');
     // Clear existing menu items
     menuBar.innerHTML = '';
 
@@ -58,7 +63,7 @@ require([
     jsonConfig = await fetchConfig();
 
     // set the title
-    const titleDiv = document.getElementById('titleDiv');
+    const titleDiv = document.getElementById('titleDiv2');
     title = jsonConfig.title
     titleDiv.innerHTML = title;
     // await loadAndDisplaySplash(jsonConfig.splashDialog);

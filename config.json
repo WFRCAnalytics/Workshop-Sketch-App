@@ -1,5 +1,5 @@
 {
-  "title": "Workshop Sketch App",
+  "title": "Fall Workshops 2024",
   "subtitle": "",
   "splashDialog": {
     "title": "INSTRUCTIONS",
@@ -10,18 +10,17 @@
     {
       "title": "Centers",
       "icon": "polygon",
-      "agolMapId": "f889d6a6996a4c19b7bab1ffc0222feb"
+      "agolMapId": "1098703156f447cf97bd13784a6e8841"
     },
     {
-      "title": "Buses",
+      "title": "Transportation",
       "icon": "driving-distance",
-      "agolMapId": "5f7dc240bf1c42369255bdefb6657824"
+      "agolMapId": "6d58366d8c1446ab969f0e9bb9d7abfa"
     },
     {
-      "title": "Rail Lines",
-      "icon": "line-straight",
-      "agolMapId": "6b31c49a055c42909b6ad50b5d701166"
+      "title": "Beehive Bikeways",
+      "icon": "driving-distance",
+      "agolMapId": "93edc14117594b2ea65a02726ceadf40"
     }
-
   ]
 }

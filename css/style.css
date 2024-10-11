@@ -1,4 +1,5 @@
 /* Basic styles */
+html,
 body {
   display: flex;
   flex-direction: column;
@@ -11,125 +12,127 @@ body {
 #mainMapView {
   flex: 1; /* Grow to fill available space */
   /* No need to set height to 100% as it will automatically fill the available space */
-  width: 100%; /* Ensure it fills the width of its parent */
+  width: 100%;
 }
 
 div.esri-item-list__filter-container--sticky,
-h5.esri-widget__heading{
-  display:none;
-}
-
-
-
-.navbar {
-  /* display: flex; */
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 10px 20px;
-  border: 2px solid #18181871;
-
-}
-
-.headerItem {
-  width: 100%;
-  vertical-align: middle;
-  display: flex;
-  align-items: center;
-  
-}
-
-#titleDiv {
-  font-size: 1.25em;
-  font-weight: bold;
-  color: rgb(71, 71, 71);
-  justify-content: center;
-  
-}
-
-#navbar-links{
-  justify-content: right;
-}
-
-#navbar-links ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-#navbar-links li {
-  margin-left: 20px;
-}
-
-#navbar-links button {
-  background-color: #007ea5;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 1em;
-  cursor: pointer;
-  height: 100%;
-}
-
-#navbar-links button:hover {
-  background-color: #777;
-}
-
-
-
-/* Remove underline from the hamburger icon */
-.toggle-button {
+h5.esri-widget__heading {
   display: none;
-  font-size: 2em;
+}
+
+.topnav {
+  background-color: #636363;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 45px;
+}
+
+#myTopnav a,
+#myTopnav div {
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#logoTitle {
+  background-color: #007ea5;
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;
+  height: 100%;
+  align-items: center;
+  border: 1px solid #a3a3a36c;
+  box-sizing: border-box;
+}
+
+#logoTitle div {
+  padding: 2px 5px;
+}
+
+
+#titleDiv2 {
+  height: 100%;
   font-weight: bold;
-  color: rgb(71, 71, 71);
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-decoration: none; /* This removes the underline */
+  display: flex;
+  flex: 2;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;
 }
 
-#logoDiv{
+#logoDiv {
   justify-content: left;
-  flex: .5;
+  flex: 0.5;
+  padding: 2px 10px;
+  box-sizing: border-box;
 }
 
-#logo{
-  height:auto;
-  width:3.5pc;
+#logo {
+  height: auto;
+  width: 3.5pc;
 }
 
+#menuItems {
+  display: flex;
+}
 
-/* Media query for small screens */
-@media (max-width: 640px) {
-  #navbar-links {
-    display: none;
-    width: 100%;
-  }
+#menuItems div {
+  height: 100%;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;
+  font-weight: bold;
+  padding: 2px 5px;
+  box-sizing: border-box;
+  border: 1px solid #a3a3a36c;
+}
 
-  #navbar-links ul {
+.active {
+  display: flex !important; /* !important overrides any other styles */
+}
+
+#menuItems div:hover {
+  background-color: #ddd;
+  color: black;
+  cursor: pointer;
+}
+
+#menuItems div.active {
+  background-color: #04aa6d;
+  color: white;
+}
+
+#hamburger {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  .topnav {
     flex-direction: column;
-    width: 100%;
+    height: auto;
   }
-
-  #navbar-links li {
-    text-align: center;
-    margin: 10px 0;
+  #menuItems {
+    display: none;
+    flex-direction: column;
   }
-
-  .toggle-button {
-    display: block;
+  /* #menuItems div {display: none;} */
+  #hamburger {
+    display: flex;
+    flex: 0.5;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    /* background-color: #636363; */
+    /* border: 1px solid #a3a3a36c; */
   }
+}
 
-  #navbar-links.active {
-    display: block;
-  }
-
-  #navbar-links button {
-    width: 75%;
-    padding: 15px;
-    font-size: .9em;
+@media (min-width: 641px) {
+  #menuItems {
+    display: flex;
+    flex-direction: row;
   }
 }

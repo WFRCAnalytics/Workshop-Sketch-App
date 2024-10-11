@@ -25,6 +25,7 @@ require([
   'esri/widgets/Expand',
   'esri/widgets/Legend',
   'esri/widgets/Editor',
+  'esri/widgets/LayerList'
 ], function (
   esriConfig,
   Map,
@@ -33,7 +34,8 @@ require([
   WebMap,
   Expand,
   Legend,
-  Editor
+  Editor,
+  LayerList
 ) {
   // Now you can use Graphic inside this callback function
 
@@ -50,25 +52,25 @@ require([
         (sketchOption) => new SketchOption(sketchOption)
       );
       // this.menuItem      = document.createElement('calcite-menu-item');
-      this.menuItem = document.createElement('li');
+      this.menuItem = document.createElement('div');
     }
 
     createMenuItemElement() {
       console.log('onSelectMenu');
-      const button = document.createElement('button');
-      button.textContent = this.title;
+      this.menuItem.textContent = this.title;
 
       const menuItemInstance = this;
-      button.addEventListener('click', function () {
+      this.menuItem.addEventListener('click', function () {
         console.log('this.menuItem:click');
         menuItemInstance.onSelectMenu();
+        var menuItems = document.getElementById('menuItems');
 
-        // close hamburger menu when map is selected
-        if (window.innerWidth < windowSizeSmall) {
-          toggleMenu();
-        }
+        menuItems.classList.toggle("active");
+        // // close hamburger menu when map is selected
+        // if (window.innerWidth < windowSizeSmall) {
+        //   toggleMenu();
+        // }
       });
-      this.menuItem.appendChild(button);
 
       return this.menuItem;
     }
@@ -76,41 +78,12 @@ require([
     onSelectMenu() {
       console.log('onSelectMenu');
 
-    //   const points = new FeatureLayer({
-    //     outFields: ['*'],
-    //     url: 'https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/WS_Editable_Features/FeatureServer/1',
-    //     // renderer: pclRendererType,
-    //     maxScale: 0,
-    //     visible: true,
-    //     // popupTemplate: parcelPopupTemplate,
-    //   });
-
-    //   const lines = new FeatureLayer({
-    //     outFields: ['*'],
-    //     url: 'https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/WS_Editable_Features/FeatureServer/0',
-    //     // renderer: pclRendererType,
-    //     maxScale: 0,
-    //     visible: true,
-    //     // popupTemplate: parcelPopupTemplate,
-    //   });
-
-    //   const polygons = new FeatureLayer({
-    //     outFields: ['*'],
-    //     url: 'https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/WS_Editable_Features/FeatureServer/2',
-    //     // renderer: pclRendererType,
-    //     maxScale: 0,
-    //     visible: true,
-    //     // popupTemplate: parcelPopupTemplate,
-    //   });
-
       // Create a new WebMap instance using the provided ID
       var webmap = new WebMap({
         portalItem: {
           id: this.agolMapId,
         },
       });
-
-      // [points, lines, polygons].forEach((layer) => webmap.add(layer));
 
       // Create a MapView instance to display the WebMap
       var mapView = new MapView({
@@ -121,7 +94,8 @@ require([
 
       // CREATE SIDE PANEL
       mapView.when(() => {
-        const editor = new Editor({
+        
+        this.editor = new Editor({
           view: mapView,
           enabled: true,
           icon: 'pencil',
@@ -134,20 +108,23 @@ require([
           },
         });
 
-        
-        editor.when(() => {
+        // format editor text
+        this.editor.when(() => {
             if (window.innerWidth < windowSizeSmall) {
-                editor.messages.widgetLabel = null;
+              this.editor.messages.widgetLabel = null;
             }else{
-                editor.messages.widgetLabel = 'Submit a Comment'; 
+              this.editor.messages.widgetLabel = 'Submit a Comment'; 
             }
+        });
 
+        this.layerList = new LayerList({
+          view: mapView
         });
 
         // Create the Expand widget
         this.expandSketchPanel = new Expand({
           view: mapView,
-          content: editor,
+          content: this.editor,
           expandIcon: 'pencil',
           expanded: expanded,
           expandTooltip: 'Draw Features',
@@ -157,7 +134,6 @@ require([
         this.legend = new Legend({
           view: mapView,
         });
-
 
         // Create the Expand widget
         this.expandLegend = new Expand({
@@ -169,12 +145,21 @@ require([
           group: 'top-right',
         });
 
-        // Add the Expand widget to the view
-        mapView.ui.add(this.expandSketchPanel, 'top-right');
-        // mapView.ui.add(editor, "top-right");
+        // Create the Expand widget
+        this.expandLayerList = new Expand({
+          view: mapView,
+          content: this.layerList,
+          expandIcon: 'layers',
+          expanded: false,
+          expandTooltip: 'Toggle Layers',
+          group: 'top-right',
+        });
+
 
         // Add the Expand widget to the view
+        mapView.ui.add(this.expandSketchPanel, 'top-right');
         mapView.ui.add(this.expandLegend, 'top-right');
+        mapView.ui.add(this.expandLayerList, 'top-right');
 
         
       });
