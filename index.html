@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="scripts/script.js"></script>
     <script src="scripts/classes.js"></script>
+    <script src="scripts/symbology.js"></script>
   </head>
   <body>
     <div class="topnav" id="myTopnav">
@@ -51,5 +52,15 @@
     </div>
 
     <div id="mainMapView"></div>
+    <div id="workshopDiv" class="esri-widget" style="display: none">
+      <label>
+        Workshop Area:
+        <calcite-select id="workshopSelect"> 
+          <calcite-option label="None" value="None" on></calcite-option>
+        </calcite-select>
+        
+      </label>
+      <br />
+    </div>
   </body>
 </html>

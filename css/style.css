@@ -136,3 +136,10 @@ h5.esri-widget__heading {
     flex-direction: row;
   }
 }
+
+#workshopDiv {
+  background-color: white;
+  color: black;
+  padding: 6px;
+  max-width: 400px;
+}

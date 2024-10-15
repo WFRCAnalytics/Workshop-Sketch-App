@@ -73,6 +73,7 @@ require([
     // logoElement.setAttribute('description', jsonConfig.subtitle || "v1 beta");
 
     await loadSketchMaps();
+    
   }
 
   init();
