@@ -81,25 +81,30 @@ require([
       this.sketchOptions = (data.sketchOptions || []).map(
         (sketchOption) => new SketchOption(sketchOption)
       );
-      // this.menuItem      = document.createElement('calcite-menu-item');
       this.menuItem = document.createElement('div');
     }
 
     createMenuItemElement() {
       console.log('onSelectMenu');
       this.menuItem.textContent = this.title;
-
       const menuItemInstance = this;
+
+      // click event for menu items
       this.menuItem.addEventListener('click', function () {
         console.log('this.menuItem:click');
+        
+        // run main map generation function
         menuItemInstance.onSelectMenu();
-        var menuItems = document.getElementById('menuItems');
 
-        menuItems.classList.toggle('active');
-        // // close hamburger menu when map is selected
-        // if (window.innerWidth < windowSizeSmall) {
-        //   toggleMenu();
-        // }
+        // change the color of the selected menu item
+        var menuItems = document.getElementById('menuItems');
+        const childElements = menuItems.querySelectorAll("*");
+        childElements.forEach((element) => {
+          element.className = ""; // Clear all classes from each element
+        });
+        menuItems.className = null;
+        menuItemInstance.menuItem.className = 'active'
+        
       });
 
       return this.menuItem;
@@ -197,6 +202,16 @@ require([
 
         // add the area selector
         const workshopSelect = document.getElementById('workshopSelect');
+        workshopSelect.innerHTML = '';
+
+        // add the "None" option
+        var noneOption = document.createElement('calcite-option');
+        noneOption.value = 'None';
+        noneOption.text = 'None';
+        noneOption.label = 'None';
+        workshopSelect.appendChild(noneOption);
+
+        // query the workshops areas layer for the options
         let workshopAreas = [];
         const query = new Query();
         query.where = '1=1';
@@ -209,9 +224,8 @@ require([
               workshopAreas.push(features[i].attributes.Name);
             }
 
-            // create workshop selection items
+            // create select items
             workshopAreas.forEach(function (option) {
-              // console.log(option)
               var newOption = document.createElement('calcite-option');
               newOption.value = option;
               newOption.text = option;
@@ -219,11 +233,9 @@ require([
               workshopSelect.appendChild(newOption);
             });
 
+            // show the workshop area boundary and center the map on it
             if (area !== 'None' && area) {
-              // workshopSelect.value = area;
               setCalciteSelectValue(workshopSelect, area);
-
-              // make the sub region boundary visible and relocate
               subregionsLayer.definitionExpression = `Name = '${area}'`;
               subregionsLayer.visible = true;
               const query = new Query();
@@ -237,13 +249,13 @@ require([
               subregionsLayer.visible = false;
             }
           });
-        // console.log(area)
-        workshopSelect.addEventListener('calciteSelectChange', () => {
-          area = workshopSelect.value;
-          console.log(workshopSelect.value);
 
+          // actions for the workshop select
+          workshopSelect.addEventListener('calciteSelectChange', () => {
+          area = workshopSelect.value;
+
+          // set url parameters
           if (workshopSelect.value !== 'None') {
-            // set url parameters
             newURL.searchParams.set('area', area);
             window.history.replaceState(
               { additionalInformation: 'Updated the URL with JS' },
@@ -251,7 +263,7 @@ require([
               newURL
             );
 
-            // make the sub region boundary visible and relocate
+            // show the workshop area boundary and center the map on it
             subregionsLayer.definitionExpression = `Name = '${area}'`;
             subregionsLayer.visible = true;
             const query = new Query();
@@ -273,8 +285,8 @@ require([
           }
         });
 
-        const workshopDiv = document.getElementById('workshopDiv');
-
+        // add the workshop select container div to the map
+        const workshopDiv = document.getElementById('workshopDiv')
         workshopDiv.style.display = 'block';
         mapView.ui.add(workshopDiv, 'bottom-left');
 

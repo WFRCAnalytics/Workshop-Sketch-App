@@ -100,7 +100,7 @@ h5.esri-widget__heading {
 }
 
 #menuItems div.active {
-  background-color: #04aa6d;
+  background-color: #789d4b;
   color: white;
 }
 
@@ -138,8 +138,8 @@ h5.esri-widget__heading {
 }
 
 #workshopDiv {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.705);
   color: black;
-  padding: 6px;
+  padding: 5px;
   max-width: 400px;
 }

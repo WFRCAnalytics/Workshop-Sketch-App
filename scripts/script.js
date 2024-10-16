@@ -57,6 +57,8 @@ require([
     });
 
     menuItems[0].onSelectMenu();
+    console.log(menuItems)
+    menuItems[0].menuItem.className = 'active'
   }
 
   async function init() {
