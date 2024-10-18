@@ -24,13 +24,27 @@
       type="text/css"
       href="https://js.arcgis.com/calcite-components/2.1.0/calcite.css"
     />
-
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <script src="scripts/script.js"></script>
     <script src="scripts/classes.js"></script>
     <script src="scripts/symbology.js"></script>
   </head>
   <body>
+    <!-- Splash Page -->
+    <div id="splash-page" class="splash-page">
+      <div class="splash-content">
+        <p>Welcome to the interactive workshop comment app!</p>
+        <p>Toggle feature visibility may be toggled by...</p>
+        <p>To add a comment, blah blah blah</p>
+        <p>To change the region, use the dropdown in the bottom-left</p>
+        <p><em>Click anywhere to continue...</em></p>
+      </div>
+    </div>
+
     <div class="topnav" id="myTopnav">
       <div id="logoTitle">
         <div id="logoDiv">
@@ -50,7 +64,6 @@
 
       <div id="menuItems"></div>
     </div>
-
     <div id="mainMapView"></div>
     <div id="workshopDiv" class="esri-widget" style="display: none">
       <calcite-label>
@@ -58,6 +71,14 @@
         <calcite-select id="workshopSelect"> </calcite-select>
       </calcite-label>
       <br />
+    </div>
+
+    <div id="aboutButton" style="display: none">
+      <i
+        id="aboutIcon"
+        class="fa-solid fa-circle-info"
+        style="color: #494949"
+      ></i>
     </div>
   </body>
 </html>

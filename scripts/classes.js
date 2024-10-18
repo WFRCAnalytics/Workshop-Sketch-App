@@ -59,7 +59,10 @@ require([
   FormTemplate,
   FeatureFormVM
 ) {
-  // Now you can use Graphic inside this callback function
+  // Splash page
+  document.getElementById('splash-page').addEventListener('click', function () {
+    this.style.display = 'none'; // Hide the splash page when clicked
+  });
 
   esriConfig.apiKey =
     'AAPK5915b242a27845f389e0a11a17dc46b46gXNFj09FJVdb711lVLGhgoVFJBqdW6ow3bl71N1hx2llpMyogGBeF8kgvrKm3cY';
@@ -92,19 +95,18 @@ require([
       // click event for menu items
       this.menuItem.addEventListener('click', function () {
         console.log('this.menuItem:click');
-        
+
         // run main map generation function
         menuItemInstance.onSelectMenu();
 
         // change the color of the selected menu item
         var menuItems = document.getElementById('menuItems');
-        const childElements = menuItems.querySelectorAll("*");
+        const childElements = menuItems.querySelectorAll('*');
         childElements.forEach((element) => {
-          element.className = ""; // Clear all classes from each element
+          element.className = ''; // Clear all classes from each element
         });
         menuItems.className = null;
-        menuItemInstance.menuItem.className = 'active'
-        
+        menuItemInstance.menuItem.className = 'active';
       });
 
       return this.menuItem;
@@ -187,6 +189,16 @@ require([
           expandIcon: 'legend',
           expanded: false,
           expandTooltip: 'Show Legend',
+          group: 'top-left',
+        });
+
+        this.expandAbout = new Expand({
+          view: mapView,
+          content: null,
+          expandIcon: 'information',
+          collapseIcon: 'information',
+          expanded: false,
+          expandTooltip: 'Display Help',
           group: 'top-right',
         });
 
@@ -195,9 +207,9 @@ require([
           view: mapView,
           content: this.layerList,
           expandIcon: 'layers',
-          expanded: true,
+          expanded: expanded,
           expandTooltip: 'Toggle Layers',
-          group: 'top-right',
+          group: 'top-left',
         });
 
         // add the area selector
@@ -250,8 +262,8 @@ require([
             }
           });
 
-          // actions for the workshop select
-          workshopSelect.addEventListener('calciteSelectChange', () => {
+        // actions for the workshop select
+        workshopSelect.addEventListener('calciteSelectChange', () => {
           area = workshopSelect.value;
 
           // set url parameters
@@ -286,14 +298,30 @@ require([
         });
 
         // add the workshop select container div to the map
-        const workshopDiv = document.getElementById('workshopDiv')
+        const workshopDiv = document.getElementById('workshopDiv');
         workshopDiv.style.display = 'block';
         mapView.ui.add(workshopDiv, 'bottom-left');
 
+        const aboutButton = document.getElementById('aboutButton');
+        aboutButton.style.display = 'flex';
+
+        aboutButton.addEventListener('click', function () {
+          document.getElementById('splash-page').style.display = 'flex'
+
+        });
+
         // Add the Expand widget to the view
-        mapView.ui.add(this.expandSketchPanel, 'top-right');
-        mapView.ui.add(this.expandLayerList, 'top-left');
-        mapView.ui.add(this.expandLegend, 'top-left');
+        if (window.innerWidth < windowSizeSmall) {
+          mapView.ui.add(this.expandLayerList, 'top-left');
+          mapView.ui.add(this.expandLegend, 'top-left');
+          mapView.ui.add(this.expandSketchPanel, 'top-left');
+          mapView.ui.add(aboutButton, 'top-left');
+        } else {
+          mapView.ui.add(this.expandSketchPanel, 'top-right');
+          mapView.ui.add(this.expandLayerList, 'top-left');
+          mapView.ui.add(this.expandLegend, 'top-left');
+          mapView.ui.add(aboutButton, 'top-right');
+        }
 
         // move the zoom icon
         mapView.ui.move('zoom', 'bottom-right');

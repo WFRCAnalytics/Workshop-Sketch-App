@@ -52,10 +52,10 @@ require([
       hamburger.innerHTML = '';
       menuBar.remove();
       hamburger.style.display = 'flex';
-      hamburger.style.flex = '0 0 20%';
-      logoDiv.style.flex = '0 0 20%';
+      hamburger.style.flex = 1;
+      logoDiv.style.flex = 1;
       logoDiv.style.textAlign = 'left'
-      titleDiv2.style.flex = '0 0 60%';
+      titleDiv2.style.flex = 2;
       
       logoTitle.style.width = '100%';
       logoTitle.style.justifyContent = 'space-between';

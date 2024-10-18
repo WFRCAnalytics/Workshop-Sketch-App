@@ -9,6 +9,28 @@ body {
   padding: 0;
 }
 
+.splash-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Translucent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  color: white;
+}
+
+.splash-content {
+  text-align: center;
+  background-color: rgb(0, 97, 155, 0.95);
+  border: 2px solid #ccc;
+  padding: 1px 5px;
+  width: 40vw;
+}
+
 #mainMapView {
   flex: 1; /* Grow to fill available space */
   /* No need to set height to 100% as it will automatically fill the available space */
@@ -107,6 +129,18 @@ h5.esri-widget__heading {
   display: none;
 }
 
+#aboutButton {
+  background-color: white;
+  justify-content: center;
+  align-items: center; 
+}
+
+#aboutIcon {
+  font-size:20px;
+}
+
+
+
 @media all and (min-width: 640px) {
   /* controls button size for TL, TR, and BR */
   .esri-ui-top-left.esri-ui-corner .esri-expand,
@@ -120,7 +154,8 @@ h5.esri-widget__heading {
   .esri-ui-bottom-right.esri-ui-corner .esri-widget--button,
   .esri-ui-bottom-left.esri-ui-corner .esri-expand,
   .esri-ui-bottom-left.esri-ui-corner .esri-expand__panel,
-  .esri-ui-bottom-left.esri-ui-corner .esri-widget--button {
+  .esri-ui-bottom-left.esri-ui-corner .esri-widget--button,
+  #aboutButton {
     min-width: 40px;
     min-height: 40px;
   }
@@ -131,9 +166,6 @@ h5.esri-widget__heading {
     min-width: 25px;
     min-height: 25px;
   }
-
-
-
 }
 
 @media screen and (max-width: 640px) {
@@ -156,9 +188,18 @@ h5.esri-widget__heading {
     /* background-color: #636363; */
     /* border: 1px solid #a3a3a36c; */
   }
+
+  #aboutButton {
+    width: 32px; 
+    height: 32px;
+  }
+
+  #aboutIcon {
+    font-size:15px;
+  }
 }
 
-@media (min-width: 641px) {
+@media screen and (min-width: 640px) {
   #menuItems {
     display: flex;
     flex-direction: row;
