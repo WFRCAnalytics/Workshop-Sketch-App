@@ -52,7 +52,6 @@ h5.esri-widget__heading {
   padding: 2px 5px;
 }
 
-
 #titleDiv2 {
   height: 100%;
   font-weight: bold;
@@ -106,6 +105,35 @@ h5.esri-widget__heading {
 
 #hamburger {
   display: none;
+}
+
+@media all and (min-width: 640px) {
+  /* controls button size for TL, TR, and BR */
+  .esri-ui-top-left.esri-ui-corner .esri-expand,
+  .esri-ui-top-left.esri-ui-corner .esri-expand__panel,
+  .esri-ui-top-left.esri-ui-corner .esri-widget--button,
+  .esri-ui-top-right.esri-ui-corner .esri-expand,
+  .esri-ui-top-right.esri-ui-corner .esri-expand__panel,
+  .esri-ui-top-right.esri-ui-corner .esri-widget--button,
+  .esri-ui-bottom-right.esri-ui-corner .esri-expand,
+  .esri-ui-bottom-right.esri-ui-corner .esri-expand__panel,
+  .esri-ui-bottom-right.esri-ui-corner .esri-widget--button,
+  .esri-ui-bottom-left.esri-ui-corner .esri-expand,
+  .esri-ui-bottom-left.esri-ui-corner .esri-expand__panel,
+  .esri-ui-bottom-left.esri-ui-corner .esri-widget--button {
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .esri-ui-top-left.esri-ui-corner calcite-icon,
+  .esri-ui-top-right.esri-ui-corner calcite-icon,
+  .esri-ui-bottom-right.esri-ui-corner calcite-icon,
+  .esri-ui-bottom-left.esri-ui-corner calcite-icon {
+    min-width: 25px;
+    min-height: 25px;
+  }
+
+
+
 }
 
 @media screen and (max-width: 640px) {

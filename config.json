@@ -8,19 +8,9 @@
   },
   "sketchMaps": [
     {
-      "title": "Centers",
+      "title": "RTP",
       "icon": "polygon",
-      "agolMapId": "1098703156f447cf97bd13784a6e8841"
-    },
-    {
-      "title": "Transportation",
-      "icon": "driving-distance",
-      "agolMapId": "6d58366d8c1446ab969f0e9bb9d7abfa"
-    },
-    {
-      "title": "Beehive Bikeways",
-      "icon": "driving-distance",
-      "agolMapId": "93edc14117594b2ea65a02726ceadf40"
+      "agolMapId": "6465cb150e104304a293ea78b5e801ef"
     }
   ]
 }

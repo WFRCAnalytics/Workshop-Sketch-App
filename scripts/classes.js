@@ -190,12 +190,12 @@ require([
           group: 'top-right',
         });
 
-        // Create the Expand widget
+        // Create the Layerlist Expand widget
         this.expandLayerList = new Expand({
           view: mapView,
           content: this.layerList,
           expandIcon: 'layers',
-          expanded: false,
+          expanded: true,
           expandTooltip: 'Toggle Layers',
           group: 'top-right',
         });
@@ -292,8 +292,11 @@ require([
 
         // Add the Expand widget to the view
         mapView.ui.add(this.expandSketchPanel, 'top-right');
-        mapView.ui.add(this.expandLegend, 'top-right');
-        mapView.ui.add(this.expandLayerList, 'top-right');
+        mapView.ui.add(this.expandLayerList, 'top-left');
+        mapView.ui.add(this.expandLegend, 'top-left');
+
+        // move the zoom icon
+        mapView.ui.move('zoom', 'bottom-right');
 
         // updates the workshop area filed in the editor form according to the dropdown selection
         var editorVM = this.editor.viewModel;
