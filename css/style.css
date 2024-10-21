@@ -197,6 +197,10 @@ h5.esri-widget__heading {
   #aboutIcon {
     font-size:15px;
   }
+
+  .splash-content {
+    width: 90vw;
+  }
 }
 
 @media screen and (min-width: 640px) {
