@@ -12,8 +12,8 @@ require([
   'esri/Map',
   'esri/views/MapView',
   'esri/widgets/Expand',
-  'esri/widgets/BasemapToggle',
-], function (editor, esriConfig, Map, MapView, Expand, BasemapToggle) {
+  'esri/widgets/BasemapGallery',
+], function (editor, esriConfig, Map, MapView, Expand, BasemapGallery,) {
   async function fetchConfig() {
     console.log('fetchConfig');
     try {

@@ -38,26 +38,24 @@ require([
   'esri/views/MapView',
   'esri/layers/FeatureLayer',
   'esri/WebMap',
+  'esri/widgets/BasemapGallery',
   'esri/widgets/Expand',
   'esri/widgets/Legend',
   'esri/widgets/Editor',
   'esri/widgets/LayerList',
   'esri/rest/support/Query',
-  'esri/form/FormTemplate',
-  'esri/widgets/FeatureForm/FeatureFormViewModel',
 ], function (
   esriConfig,
   Map,
   MapView,
   FeatureLayer,
   WebMap,
+  BasemapGallery,
   Expand,
   Legend,
   Editor,
   LayerList,
-  Query,
-  FormTemplate,
-  FeatureFormVM
+  Query
 ) {
   // Splash page
   document.getElementById('splash-page').addEventListener('click', function () {
@@ -168,6 +166,12 @@ require([
           view: mapView,
         });
 
+        // create the base map gallery expand object
+        this.basemapGallery = new BasemapGallery({
+          view: mapView,
+          container: document.createElement('div'),
+        });
+
         // Create the Expand widget
         this.expandSketchPanel = new Expand({
           view: mapView,
@@ -192,15 +196,6 @@ require([
           group: 'top-left',
         });
 
-        this.expandAbout = new Expand({
-          view: mapView,
-          content: null,
-          expandIcon: 'information',
-          collapseIcon: 'information',
-          expanded: false,
-          expandTooltip: 'Display Help',
-          group: 'top-right',
-        });
 
         // Create the Layerlist Expand widget
         this.expandLayerList = new Expand({
@@ -211,6 +206,15 @@ require([
           expandTooltip: 'Toggle Layers',
           group: 'top-left',
         });
+
+        this.bgExpand = new Expand({
+          expandTooltip: 'Basemap',
+          view: mapView,
+          content: this.basemapGallery,
+          group: 'top-left',
+      });
+
+        
 
         // add the area selector
         const workshopSelect = document.getElementById('workshopSelect');
@@ -306,8 +310,7 @@ require([
         aboutButton.style.display = 'flex';
 
         aboutButton.addEventListener('click', function () {
-          document.getElementById('splash-page').style.display = 'flex'
-
+          document.getElementById('splash-page').style.display = 'flex';
         });
 
         // Add the Expand widget to the view
@@ -315,11 +318,13 @@ require([
           mapView.ui.add(this.expandLayerList, 'top-left');
           mapView.ui.add(this.expandLegend, 'top-left');
           mapView.ui.add(this.expandSketchPanel, 'top-left');
+          mapView.ui.add(this.bgExpand, 'top-left');
           mapView.ui.add(aboutButton, 'top-left');
         } else {
           mapView.ui.add(this.expandSketchPanel, 'top-right');
           mapView.ui.add(this.expandLayerList, 'top-left');
           mapView.ui.add(this.expandLegend, 'top-left');
+          mapView.ui.add(this.bgExpand, 'top-left');
           mapView.ui.add(aboutButton, 'top-right');
         }
 

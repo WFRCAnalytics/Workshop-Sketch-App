@@ -168,6 +168,11 @@ h5.esri-widget__heading {
   }
 }
 
+/* fixes issue with extra scroll bar */
+.esri-item-list__scroller{
+  overflow-y: hidden;
+}
+
 @media screen and (max-width: 640px) {
   .topnav {
     flex-direction: column;
